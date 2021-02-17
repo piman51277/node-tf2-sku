@@ -16,7 +16,8 @@ const TEMPLATE = {
     craftnumber: null,
     crateseries: null,
     output: null,
-    outputQuality: null
+    outputQuality: null,
+    paint: null
 };
 
 /**
@@ -28,7 +29,7 @@ class SKU {
      * @param {String} sku SKU string
      * @return {Object} item Item object
      */
-    static fromString (sku) {
+    static fromString(sku) {
         const attributes = {};
 
         const parts = sku.split(';');
@@ -76,6 +77,8 @@ class SKU {
                 attributes.output = parseInt(attribute.substring(2));
             } else if (attribute.startsWith('oq') && isNum(attribute.substring(2))) {
                 attributes.outputQuality = parseInt(attribute.substring(2));
+            } else if (attribute.startsWith('p') && isNum(attribute.substring(2))) {
+                attributes.outputQuality = parseInt(attribute.substring(2));
             }
         }
 
@@ -89,7 +92,7 @@ class SKU {
      * @param {Object} item Item object
      * @return {String} sku SKU string
      */
-    static fromObject (item) {
+    static fromObject(item) {
         item = objectPrettify(defaults(item, TEMPLATE), TEMPLATE);
 
         let sku = `${item.defindex};${item.quality}`;
@@ -133,12 +136,15 @@ class SKU {
         if (item.outputQuality) {
             sku += `;oq-${item.outputQuality}`;
         }
+        if (item.paint) {
+            sku += `;p-${item.outputQuality}`;
+        }
+
 
         return sku;
     }
-}
 
-function isNum (test) {
+function isNum(test) {
     return /^-{0,1}\d+$/.test(test);
 }
 
