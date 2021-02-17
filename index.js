@@ -143,7 +143,7 @@ class SKU {
 
         return sku;
     }
-
+}
 function isNum(test) {
     return /^-{0,1}\d+$/.test(test);
 }
