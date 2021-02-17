@@ -8,6 +8,7 @@ const TEMPLATE = {
     killstreak: 0,
     australium: false,
     festive: false,
+    haspart: false,
     effect: null,
     paintkit: null,
     wear: null,
@@ -57,6 +58,8 @@ class SKU {
                 attributes.australium = true;
             } else if (attribute === 'festive') {
                 attributes.festive = true;
+            } else if (attribute === 'haspart') {
+                attributes.haspart = true;
             } else if (attribute === 'strange') {
                 attributes.quality2 = 11;
             } else if (attribute.startsWith('kt') && isNum(attribute.substring(2))) {
@@ -105,6 +108,9 @@ class SKU {
         }
         if (item.craftable === false) {
             sku += ';uncraftable';
+        }
+        if (item.haspart === true) {
+            sku += ';haspart';
         }
         if (item.wear) {
             sku += `;w${item.wear}`;
