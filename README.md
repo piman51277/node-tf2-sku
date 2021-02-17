@@ -31,7 +31,8 @@ const item = SKU.fromString(sku);
     wear: null,
     quality2: null,
     target: null,
-    craftnumber: null
+    craftnumber: null,
+    paint: null
 }
 */
 ```
@@ -52,7 +53,8 @@ const item = {
     wear: null,
     quality2: null,
     target: null,
-    craftnumber: null
+    craftnumber: null,
+    paint: null
 };
 
 // Converts the item object into an sku string
